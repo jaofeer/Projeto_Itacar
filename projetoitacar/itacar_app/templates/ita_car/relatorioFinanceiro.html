@@ -1,0 +1,64 @@
+{% extends "ita_car/layout.html" %}
+{% block title %}
+Relatório Financeiro
+{% endblock %}
+{% block content %}
+
+
+  <h2>Relatório Financeiro!</h2>
+
+  <body>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Valor Recebido</th>
+            <th>Taxa do App</th>
+            <th>Gasto Médio Gasolina</th>
+        </tr>
+        {% for relatorio in relatorios %}
+            <tr>
+                <td>{{ relatorio.data }}</td>
+                <td>{{ relatorio.valor_recebido_total }}</td>
+                <td>{{ relatorio.taxa_do_app }}</td>
+                <td>{{ relatorio.gasto_medio_gasolina }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    
+        h2 {
+            color: #333;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+    
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color:black
+        }
+    
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+    
+        tr:hover {
+            background-color: #e76011;
+        }
+    </style>
+        </div>
+
+
+</body>
+{% endblock %}

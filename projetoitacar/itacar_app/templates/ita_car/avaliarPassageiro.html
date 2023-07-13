@@ -1,0 +1,101 @@
+{% extends "ita_car/layout.html" %}
+{% block title %}
+Interface de Avaliar Passageiro
+{% endblock %}
+{% block content %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<!DOCTYPE html>
+<form method="POST" class="avaliarPassageiro-form" action="">
+{% csrf_token %}
+{{ form.as_p }}
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+  </style>
+  </head>
+  <body>
+
+  <p>Avaliação</p>
+
+  <label for="idCorrida">ID da Corrida:</label>
+  <input type="text" id="idCorrida" name="idCorrida"><br>
+  
+  <label for="nomePass">Nome do Passageiro:</label>
+  <input type="text" id="nomePass" name="nomePass">
+  
+  <style>
+    .avaliacao {
+      display: flex;
+    }
+
+    .star-icon {
+      list-style-type: none;
+      border: 1px solid #fff;
+      cursor: pointer;
+      color: #e3bb2b;
+      font-size: 40px;
+    }
+
+    .star-icon::before {
+      content: "\2605";
+    }
+
+    .star-icon.ativo ~ .star-icon::before {
+      content: "\2606";
+    }
+
+    .avaliacao:hover .star-icon::before {
+      content: "\2605";
+    }
+
+    .star-icon:hover ~ .star-icon::before {
+      content: "\2606";
+    }
+  </style>
+
+<input type="hidden" id="notaSelecionada" name="nota" value="">
+
+<script>
+  function armazenarNota(nota) {
+    var estrelas = document.querySelectorAll('.star-icon');
+    estrelas.forEach(function(estrela) {
+      estrela.classList.remove('ativo');
+    });
+
+    var estrelaClicada = document.getElementById('estrela-' + nota);
+    estrelaClicada.classList.add('ativo');
+
+    document.getElementById('notaSelecionada').value = nota;
+  }
+</script>
+
+<body>
+  <ul class="avaliacao">
+    <li class="star-icon" id="estrela-1" onclick="armazenarNota(1)"></li>
+    <li class="star-icon" id="estrela-2" onclick="armazenarNota(2)"></li>
+    <li class="star-icon" id="estrela-3" onclick="armazenarNota(3)"></li>
+    <li class="star-icon" id="estrela-4" onclick="armazenarNota(4)"></li>
+    <li class="star-icon" id="estrela-5" onclick="armazenarNota(5)"></li>
+  </ul>
+</body>
+
+  <label for="comentario">Comentário:</label>
+  <input type="text" id="comentario" name="comentario"><br> 
+
+
+<!--  <button onclick="enviarNota()">Enviar</button> -->
+  <button onclick="enviarNota()" class="save btn btn-default">Enviar</button>
+
+  <div id="mensagem"></div>
+
+</body>
+</head>
+</html>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "ita_car/layout.html" %}
+{% block title %}
+Cadastrar Motorista
+{% endblock %}
+{% block content %}
+
+
+  <h2>Interface Para Cadastrar Motorista!</h2>
+
+  <form method="post" action="/criarConta/">
+    {% csrf_token %}
+    <label for="nomeMot">Nome:</label>
+    <input type="text" id="nomeMot" name="nomeMot" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="CPF">CPF:</label>
+    <input type="text" id="CPF" name="CPF" required>
+
+    <label for="nomeDoCarro">Nome do Carro:</label>
+    <input type="text" id="nomeDoCarro" name="nomeDoCarro" required>
+
+    <label for="placaDoCarro">Placa Do Carro:</label>
+    <input type="text" id="placaDoCarro" name="placaDoCarro" required>
+
+    <br>
+    <button type="submit" class="save btn btn-cadastrar">Cadastrar</button>
+  </form>
+{% endblock %}

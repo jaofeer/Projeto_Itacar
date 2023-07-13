@@ -1,0 +1,70 @@
+{%extends "ita_car/layout.html"%}
+{%block title%}
+Ver historico
+{%endblock%}
+{%block content%}
+<h3>Interface para ver historico de corridas<h3>
+<br>
+{%if error_message%}<p><strong>{{ error_message }}</strong></p>{%endif%}
+
+
+<body>
+    <h1>Histórico de Corridas</h1>
+    <table>
+        <thead>
+          <tr>
+            <th>ID Motorista</th>
+            <th>ID Passageiro</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Valor da Viagem</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in historico %}
+            <tr>
+              <td>{{ item.IDMotorista }}</td>
+              <td>{{ item.IDpassageiro }}</td>
+              <td>{{ item.data }}</td>
+              <td>{{ item.horario }}</td>
+              <td>{{ item.valorViagem }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        color:black
+    }
+
+    th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #e76011;
+    }
+</style>
+    </div>
+</body>
+{%endblock%}

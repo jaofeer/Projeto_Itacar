@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ita_car\site.css' %}"/>
+</head>
+
+
+<body>
+<div class="navbar">
+    <a href="/" class="navbar-brand">Home</a>
+    <a href="{% url 'criarConta' %}" class="navbar-item">Criar Conta</a>
+    <a href="{% url 'efetuarLogin' %}" class="navbar-item">Efetuar Login</a>
+    <a href="{% url 'historicoCorrida' %}" class="navbar-item">Ver Histórico de Corrida</a>
+    <a href="{% url 'avaliarPassageiro' %}" class="navbar-item">Avaliar Passageiro</a>
+    <a href="{% url 'relatorioFinanceiro' %} "class="navbar-item">Ver Relatório Financeiro</a>
+</div>
+
+<div class="body-content">
+    {% block content %}
+    {% endblock %}
+    <hr/>
+    <footer>
+        <p>© 2023</p>
+    </footer>
+</div>
+</body>
+</html>
